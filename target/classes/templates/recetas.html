@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+	<div th:include="plantilla.html::cabecera"></div>
+	<main>
+		<section>
+			<h2>TODAS LAS RECETAS</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Nombre</th>
+						<th>Dificultad</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="receta : ${atr_lista_recetas}">
+						<td th:text="${receta.id}"></td>
+						<td th:text="${receta.nombre}"></td>
+						<td th:text="${receta.dificultad.dificultad}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+	</main>
+	<div th:include="plantilla.html::pie"></div>
+</body>
+</html>

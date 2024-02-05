@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+	<div th:include="plantilla.html::cabecera"></div>
+
+	<main>
+		<section>
+			<h2>INSERTAR RECETAS</h2>
+			<form th:action="@{/guardarReceta}" th:object="${objeto_entidad}" method="post">
+				<label>Nombre</label>
+				<input type="text" th:field="*{nombre}" name="nombre" placeholder="Nombre" required><br>
+
+				<label>Dificultad</label>
+				<select name="dificultad.id" th:field="*{dificultad.id}">
+					<option th:each="elemento : ${atr_lista_difilcutades}" th:value="${elemento.id}"
+						th:text="${elemento.dificultad}"> >
+					</option>
+				</select>
+				<input class="submit" type="submit" value="Insertar">
+
+			</form>
+		</section>
+
+
+	</main>
+
+
+	<div th:include="plantilla.html::pie"></div>
+
+</body>
+
+</html>
